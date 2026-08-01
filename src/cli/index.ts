@@ -1031,6 +1031,11 @@ switch (command) {
     process.exitCode = await handleAccessCommand(["key", ...args.slice(1)]);
     break;
   }
+  case "export": {
+    const { handleExportCommand } = await import("./export-command");
+    process.exitCode = await handleExportCommand(args.slice(1));
+    break;
+  }
   case "grok": {
     const { handleGrokCommand } = await import("./integrations");
     process.exitCode = await handleGrokCommand(args.slice(1));
